@@ -1,12 +1,18 @@
-const express = require("express");
-const app = express();
-// Importa todas as rotas
-const routes = require("./routes");
+require("dotenv").config();
 
-// Precisamos usar as routes para que as rotas funcionem
+const express = require("express");
+const routes = require("./routes");
+const connectToDataBase = require("./database");
+const cors = require("cors");
+
+const app = express();
+
+connectToDataBase();
+
+app.use(cors());
+app.use(express.json());
 app.use(routes);
 
-// A porta onde o servidor vai ser iniciado
 const port = 3001;
 app.listen(port, () => {
   console.log("Servidor iniciado na porta 3001");

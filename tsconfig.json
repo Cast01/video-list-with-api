@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js", "src/components/VideoList/style.js", "src/components/Layout/style.js", "src/components/Footer/style.js", "src/components/Header/style.js", "src/components/AddVideo/style.js", "src/components/AddVideo/AddVideo.jsx", "src/components/Footer/Footer.jsx", "src/components/Layout/Layout.jsx", "src/pages/_app.tsx", "src/pages/index.tsx", "src/components/VideoList/VideoList.jsx"],
   "exclude": ["node_modules"]
 }

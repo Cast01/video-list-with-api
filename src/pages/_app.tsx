@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { VideoContextProvider } from "../contexts/VideoContext";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,10 +24,12 @@ const theme = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <VideoContextProvider>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </VideoContextProvider>
     </>
   );
 }

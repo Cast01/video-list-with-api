@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Button, ButtonArea } from "./style";
 import { IoTrashBin, IoThumbsUp, IoPencil } from "react-icons/io5";
+import VideoList from "../VideoList/VideoList";
+import { VideoContext } from "../../contexts/VideoContext";
 
 export default function Video({ id, title, link, liked }) {
+  const { handleUpdateModal } = useContext(VideoContext);
+
   return (
     <li>
       <Container>

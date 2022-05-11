@@ -4,7 +4,7 @@ import { Container, VideoListWrapper } from "./style";
 import { useAxios } from "../../hooks/useAxios";
 
 export default function VideoList() {
-  const { data } = useAxios("https://video-list-with-api.vercel.app/videos");
+  const { data } = useAxios("videos");
 
   return (
     <Container>

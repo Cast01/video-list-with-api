@@ -33,7 +33,7 @@ export function VideoContextProvider({ children }) {
       title,
       link,
     };
-    api.post("videos", submitVideoObj);
+    api.post("https://video-list-with-api.vercel.app/videos", submitVideoObj);
 
     setOpenFormModal(false);
 
@@ -54,7 +54,10 @@ export function VideoContextProvider({ children }) {
       title,
       link,
     };
-    api.put(`http://localhost:3001/videos/${id}`, submitVideoObj);
+    api.put(
+      `https://video-list-with-api.vercel.app/videos/${id}`,
+      submitVideoObj
+    );
 
     const updatedVideos = {
       videos: data.videos?.map((video) =>
@@ -75,7 +78,7 @@ export function VideoContextProvider({ children }) {
   }
 
   async function deleteVideo(id) {
-    api.delete(`http://localhost:3001/videos/${id}`);
+    api.delete(`https://video-list-with-api.vercel.app/videos/${id}`);
 
     const updatedVideos = {
       videos: data.videos?.filter((video) => video._id !== id),
@@ -85,7 +88,7 @@ export function VideoContextProvider({ children }) {
   }
 
   async function likedFunc(id, liked) {
-    api.patch(`http://localhost:3001/videos/${id}`);
+    api.patch(`https://video-list-with-api.vercel.app/videos/${id}`);
 
     const updatedVideos = {
       videos: data.videos?.map((video) =>

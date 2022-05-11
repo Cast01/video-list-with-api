@@ -16,21 +16,26 @@ export default function FormModal() {
   const {
     handleCloseForm,
     setTitle,
+    title,
     setLink,
+    link,
     handleSubmit,
-    handleUpdateSubmit,
+    updateMode,
+    handleSubmitUpdate,
   } = useContext(VideoContext);
 
   return (
     <Overlay>
       <Container>
         <Header>
-          <strong>Add a vídeo</strong>
+          <strong>{updateMode ? "Update" : "Add"} a vídeo</strong>
           <button>
             <CloseIcon onClick={handleCloseForm} />
           </button>
         </Header>
-        <FormContainer onSubmit={handleSubmit}>
+        <FormContainer
+          onSubmit={updateMode ? handleSubmitUpdate : handleSubmit}
+        >
           <FormMain>
             <InputGroup>
               <label htmlFor="title">Title</label>
@@ -39,6 +44,7 @@ export default function FormModal() {
                 id="title"
                 placeholder="Título do vídeo"
                 onChange={(e) => setTitle(e.target.value)}
+                defaultValue={updateMode ? title : ""}
               />
             </InputGroup>
             <InputGroup>
@@ -48,6 +54,7 @@ export default function FormModal() {
                 id="link"
                 placeholder="Link do vídeo"
                 onChange={(e) => setLink(e.target.value)}
+                defaultValue={updateMode ? link : ""}
               />
             </InputGroup>
           </FormMain>

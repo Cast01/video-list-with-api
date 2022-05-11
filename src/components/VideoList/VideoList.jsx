@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
 import AddVideo from "../AddVideo/AddVideo";
 import Video from "../Video/Video";
 import { Container, VideoListWrapper } from "./style";
-
-import api from "../../services/api";
+import { useAxios } from "../../hooks/useAxios";
 
 export default function VideoList() {
-  const [videoList, setVideoList] = useState([]);
-
-  useEffect(() => {
-    api.get("videos").then(({ data }) => setVideoList(data.videos));
-  }, []);
+  const { data } = useAxios("videos");
 
   return (
     <Container>
       <VideoListWrapper>
-        {videoList.map((video) => (
+        {data?.videos?.map((video) => (
           <Video
             key={video._id}
             id={video._id}

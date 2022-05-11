@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Container, Button, ButtonArea } from "./style";
 import { IoTrashBin, IoThumbsUp, IoPencil } from "react-icons/io5";
-import VideoList from "../VideoList/VideoList";
 import { VideoContext } from "../../contexts/VideoContext";
 
 export default function Video({ id, title, link, liked }) {
-  const { handleUpdateModal } = useContext(VideoContext);
+  const { openFormModalUpdate, deleteVideo, likedFunc } =
+    useContext(VideoContext);
 
   return (
     <li>
@@ -16,13 +16,13 @@ export default function Video({ id, title, link, liked }) {
         </a>
         <ButtonArea>
           <Button liked={liked}>
-            <IoThumbsUp />
+            <IoThumbsUp onClick={() => likedFunc(id, liked)} />
           </Button>
           <Button>
-            <IoPencil />
+            <IoPencil onClick={() => openFormModalUpdate(id, title, link)} />
           </Button>
           <Button>
-            <IoTrashBin />
+            <IoTrashBin onClick={() => deleteVideo(id)} />
           </Button>
         </ButtonArea>
       </Container>

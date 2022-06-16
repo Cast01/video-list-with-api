@@ -16,7 +16,9 @@ export function VideoContextProvider({ children }) {
   const [id, setId] = useState("");
   const [fakeId, setFakeId] = useState(0);
 
-  const { data, mutate } = useAxios("videos");
+  const { data, mutate } = useAxios(
+    "https://api-videos-videoteca.herokuapp.com/videos"
+  );
 
   function handleAdd() {
     setOpenFormModal(true);
@@ -78,7 +80,6 @@ export function VideoContextProvider({ children }) {
     setOpenFormModal(false);
     setTitle("");
     setLink("");
-    router.reload();
   }
 
   async function deleteVideo(id) {
@@ -89,7 +90,6 @@ export function VideoContextProvider({ children }) {
     };
 
     mutate(updatedVideos, false);
-    router.reload();
   }
 
   async function likedFunc(id, liked) {
@@ -106,7 +106,6 @@ export function VideoContextProvider({ children }) {
       ),
     };
     mutate(updatedVideos, false);
-    router.reload();
   }
 
   const value = {

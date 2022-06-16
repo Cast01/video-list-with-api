@@ -33,7 +33,10 @@ export function VideoContextProvider({ children }) {
       title,
       link,
     };
-    api.post("videos", submitVideoObj);
+    api.post(
+      "https://api-videos-videoteca.herokuapp.com/videos",
+      submitVideoObj
+    );
 
     setOpenFormModal(false);
 
@@ -75,6 +78,7 @@ export function VideoContextProvider({ children }) {
     setOpenFormModal(false);
     setTitle("");
     setLink("");
+    router.reload();
   }
 
   async function deleteVideo(id) {
@@ -85,6 +89,7 @@ export function VideoContextProvider({ children }) {
     };
 
     mutate(updatedVideos, false);
+    router.reload();
   }
 
   async function likedFunc(id, liked) {
@@ -101,6 +106,7 @@ export function VideoContextProvider({ children }) {
       ),
     };
     mutate(updatedVideos, false);
+    router.reload();
   }
 
   const value = {

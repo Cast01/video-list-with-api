@@ -93,7 +93,7 @@ export function VideoContextProvider({ children }) {
   }
 
   async function likedFunc(id, liked) {
-    api.patch(`https://api-videos-videoteca.herokuapp.com/videos/${id}`);
+    await api.patch(`https://api-videos-videoteca.herokuapp.com/videos/${id}`);
 
     const updatedVideos = {
       videos: data.videos?.map((video) =>

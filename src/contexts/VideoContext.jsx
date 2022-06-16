@@ -54,7 +54,10 @@ export function VideoContextProvider({ children }) {
       title,
       link,
     };
-    api.put(`http://localhost:3001/videos/${id}`, submitVideoObj);
+    api.put(
+      `https://api-videos-videoteca.herokuapp.com/videos/${id}`,
+      submitVideoObj
+    );
 
     const updatedVideos = {
       videos: data.videos?.map((video) =>
@@ -75,7 +78,7 @@ export function VideoContextProvider({ children }) {
   }
 
   async function deleteVideo(id) {
-    api.delete(`http://localhost:3001/videos/${id}`);
+    api.delete(`https://api-videos-videoteca.herokuapp.com/videos/${id}`);
 
     const updatedVideos = {
       videos: data.videos?.filter((video) => video._id !== id),
@@ -85,7 +88,7 @@ export function VideoContextProvider({ children }) {
   }
 
   async function likedFunc(id, liked) {
-    api.patch(`http://localhost:3001/videos/${id}`);
+    api.patch(`https://api-videos-videoteca.herokuapp.com/videos/${id}`);
 
     const updatedVideos = {
       videos: data.videos?.map((video) =>

@@ -4,7 +4,9 @@ import { Container, VideoListWrapper } from "./style";
 import { useAxios } from "../../hooks/useAxios";
 
 export default function VideoList() {
-  const { data } = useAxios("videos");
+  const { data } = useAxios(
+    "https://api-videos-videoteca.herokuapp.com/videos"
+  );
 
   return (
     <Container>
